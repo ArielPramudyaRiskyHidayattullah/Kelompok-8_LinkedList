@@ -52,3 +52,38 @@ def tampilkan_menu():
 
 # Inisialisasi linked list untuk pesanan
 keranjang = LinkedList()
+
+# Main program
+while True:
+    print("\n=== Aplikasi Pemesanan Menu Miexue ===")
+    print("Menu:")
+    print("1. Tambah pesanan ke keranjang")
+    print("2. Tampilkan pesanan yang sudah ditambahkan")
+    print("3. Jumlah Harga yang dibayarkan")
+    print("4. Keluar")
+
+    pilihan = input("Pilih menu (1/2/3/4): ")
+
+    if pilihan == '1':
+        tampilkan_menu()
+        menu = input("Masukkan nama menu: ")
+        if menu in menu_miexue:
+            harga = menu_miexue[menu]
+            keranjang.tambah_pesanan(menu, harga)
+            print(f"{menu} telah ditambahkan ke keranjang.")
+        else:
+            print("Menu tidak valid.")
+
+    elif pilihan == '2':
+        keranjang.tampilkan_pesanan()
+
+    elif pilihan == '3':
+        total_harga = keranjang.hitung_total_harga()
+        print(f"Total harga yang harus dibayarkan: Rp {total_harga}")
+
+    elif pilihan == '4':
+        print("Terima kasih telah menggunakan aplikasi.")
+        break
+
+    else:
+        print("Pilihan tidak valid. Silakan pilih menu yang benar.")
